@@ -18,6 +18,7 @@
 services:
   opencart:
     image: aamservices/opencart:3.0.3.8
+    platform: linux/amd64  # Use emulation on ARM64 (Apple Silicon) hosts
     restart: unless-stopped
     depends_on:
       db:
@@ -31,6 +32,7 @@ services:
 
   db:
     image: mariadb:10.6
+    platform: linux/amd64  # Use emulation on ARM64 (Apple Silicon) hosts
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: root
